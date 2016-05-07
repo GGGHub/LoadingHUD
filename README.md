@@ -3,7 +3,8 @@
 网络加载遮罩层，当加载失败时可以重新加载数据 
 
 ---
-实现效果
+实现效果</br>
+![](https://github.com/GGGHub/LoadingHUD/blob/master/LoadingHUD/hud.gif "演示")
 
 ---
 **关于LoadingHUD**
@@ -22,7 +23,7 @@
 -(void)showHUDText:(NSString *)text inViewController:(UIViewController *)vc;
 ```
 
-- 显示加载失败
+- 显示加载失败</br>
 实例方法
 ```objective-c
 -(void)showFailHUDText:(NSString *)text inViewController:(UIViewController *)vc reload:(reload)reload;
@@ -32,7 +33,7 @@
 +(void)failHUDText:(NSString *)text inViewController:(UIViewController *)vc reload:(reload)reload;
 ```
 
-- 隐藏遮罩
+- 隐藏遮罩</br>
 实例方法
 ```objective-c
 -(void)hiddenHUDViewController:(UIViewController *)vc;
