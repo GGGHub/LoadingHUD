@@ -161,14 +161,16 @@
         }
     }
 }
-#pragma mark - Font Height
--(CGFloat)fontText:(NSString *)text withFontWidth:(CGFloat)width
++(void)failHUDText:(NSString *)text inViewController:(UIViewController *)vc reload:(reload)reload
 {
-    NSDictionary *fontAttribute = @{NSFontAttributeName : [UIFont systemFontOfSize:14]};
-    CGSize fontSize = [text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:fontAttribute context:nil].size;
-    return fontSize.height;
+    for (UIViewController *viewController in vc.childViewControllers) {
+        if ([viewController isKindOfClass:[LSYLoadingHUD class]]) {
+            LSYLoadingHUD *loadingVC = (LSYLoadingHUD *)viewController;
+            [loadingVC showFailHUDText:text inViewController:vc reload:reload];
+            break;
+        }
+    }
 }
-
 #pragma mark -
 -(void)viewDidLayoutSubviews
 {

@@ -43,12 +43,7 @@
 }
 -(void)failure:(NSString *)text block:(void(^)(void))block
 {
-    for (UIViewController *viewController in self.childViewControllers) {
-        if ([viewController isKindOfClass:[LSYLoadingHUD class]]) {
-            LSYLoadingHUD *loadingVC = (LSYLoadingHUD *)viewController;
-            [loadingVC showFailHUDText:text inViewController:self reload:block];
-        }
-    }
+    [LSYLoadingHUD failHUDText:text inViewController:self reload:block];
 }
 -(void)hidden
 {

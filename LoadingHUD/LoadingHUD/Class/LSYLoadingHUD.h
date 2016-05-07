@@ -18,11 +18,13 @@ typedef NS_ENUM(NSUInteger,OKWLoadState){
 
 @interface LSYLoadingHUD : UIViewController
 @property (nonatomic,strong) UIImage *failureImage;   //加载失败视图，没有设置的话使用默认视图
-@property (nonatomic,strong) UIView *loadingView;    //加载视图,如果没有设置的话使用默认动画
+@property (nonatomic,strong) UIView *loadingView;    //加载动画,如果没有设置的话使用默认动画
 
-
+#pragma mark -
 -(void)showHUDText:(NSString *)text inViewController:(UIViewController *)vc;
 -(void)hiddenHUDViewController:(UIViewController *)vc;
 -(void)showFailHUDText:(NSString *)text inViewController:(UIViewController *)vc reload:(reload)reload;
+#pragma mark Class Method
 +(void)hiddenAllHUD:(UIViewController *)vc;
++(void)failHUDText:(NSString *)text inViewController:(UIViewController *)vc reload:(reload)reload;
 @end
