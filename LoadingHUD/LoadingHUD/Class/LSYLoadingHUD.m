@@ -179,7 +179,7 @@
     _loadingView.frame = CGRectMake((self.view.frame.size.width - 100)/2, self.view.frame.size.height/2-100, 100, 100);
     _stateView.frame = CGRectMake((self.view.frame.size.width - 100)/2, self.view.frame.size.height/2-100, 100, 100);
     
-    _stateLabel.frame = CGRectMake(10,(_activity.frame.origin.y+_activity.frame.size.height)?:(_loadingView.frame.origin.y+_loadingView.frame.size.height)+10, self.view.frame.size.width-20, [_stateLabel sizeThatFits:CGSizeMake(self.view.frame.size.width-20, 0)].height);
+    _stateLabel.frame = CGRectMake(10,((_activity.frame.origin.y+_activity.frame.size.height)?:(_loadingView.frame.origin.y+_loadingView.frame.size.height))+10, self.view.frame.size.width-20, [_stateLabel sizeThatFits:CGSizeMake(self.view.frame.size.width-20, 0)].height);
     _refreshButton.frame = CGRectMake((self.view.frame.size.width-100)/2,_stateLabel.frame.origin.y+_stateLabel.frame.size.height+10, 100,30);
     
 }
