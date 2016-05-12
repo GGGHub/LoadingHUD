@@ -23,7 +23,7 @@
     _count++;
     [self showText:@"正在加载..."];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        sleep(5);
+        sleep(3);
         dispatch_async(dispatch_get_main_queue(), ^{
             if (_count==2) {
                 [self hidden];

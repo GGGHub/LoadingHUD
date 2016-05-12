@@ -8,10 +8,11 @@
 
 #import "LSYLoadingHUD.h"
 #import "LSYActivityIndicator.h"
-
+#import <objc/runtime.h>
 #define StateFont [UIFont systemFontOfSize:14]
 #define FontColor [UIColor blackColor]
 
+static void * ShowInVC = @"ShowInVC";
 @interface LSYLoadingHUD ()
 
 @property (nonatomic,strong) LSYActivityIndicator *activity;
@@ -130,7 +131,8 @@
 #pragma mark - Publish Method
 -(void)showHUDText:(NSString *)text inViewController:(UIViewController *)vc
 {
-    self.view.frame = vc.view.frame;
+    objc_setAssociatedObject(vc, ShowInVC, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    self.view.bounds = vc.view.bounds;
     [self removeFromParentViewController];
     [vc addChildViewController:self];
     [vc.view addSubview:self.view];
@@ -163,8 +165,14 @@
 }
 +(void)failHUDText:(NSString *)text inViewController:(UIViewController *)vc reload:(reload)reload
 {
+    id objc_getvc = objc_getAssociatedObject(vc, ShowInVC);
     for (UIViewController *viewController in vc.childViewControllers) {
         if ([viewController isKindOfClass:[LSYLoadingHUD class]]) {
+            if (objc_getvc != viewController) {
+                [viewController removeFromParentViewController];
+                [viewController.view removeFromSuperview];
+                continue;
+            }
             LSYLoadingHUD *loadingVC = (LSYLoadingHUD *)viewController;
             [loadingVC showFailHUDText:text inViewController:vc reload:reload];
             break;

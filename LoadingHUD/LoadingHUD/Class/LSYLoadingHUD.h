@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 typedef void (^reload)(void);
-
-typedef void (^refreshLoading) (void);
 typedef NS_ENUM(NSUInteger,OKWLoadState){
     OKWLoading,
     OKWLoadError
